@@ -61,6 +61,7 @@ async def on_message(ctx):
             for match in re.finditer(DISCORD_CDN_REGEX, message.content):
                 url = match.group(0)
                 await user.send(f"CDN link from {message.author}: {url}")
+        await ctx.send(f"Done sending videos to {user.name}")
     except discord.Forbidden:
         await ctx.send(f"Cannot send messages to {user.name}. Check your privacy settings.")
         print(f"Cannot send messages to {user.name}. Check their privacy settings.")
