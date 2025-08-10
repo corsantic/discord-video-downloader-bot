@@ -8,6 +8,4 @@ Add bot to channel give permissions these permissions:
 - Attach Files
 - Send Messages
 
-Then run it and give the channel ID it will download all videos in that
-channel.
-
+This version will send videos with bot command to users
