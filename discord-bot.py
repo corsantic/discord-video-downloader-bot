@@ -1,15 +1,12 @@
 import discord
 from discord.ext import commands
-import aiohttp
 import os
 import re
 from dotenv import load_dotenv
-from urllib.parse import urlparse
 
 load_dotenv()
 
 TOKEN = str(os.getenv("discord_bot_token"))
-# CHANNEL_ID = int(input("Enter the Discord channel ID: "))
 SAVE_FOLDER = "videos"
 DISCORD_CDN_REGEX = (
     r"https://cdn\.discordapp\.com/attachments/[^\s>]+?\.(mp4|mov|webm|mkv)(\?[^\s>]*)?"
