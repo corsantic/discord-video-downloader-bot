@@ -9,3 +9,4 @@ Add bot to channel give permissions these permissions:
 - Send Messages
 
 This version will send videos with bot command to users
+If you want to download use `download-to-local` branch
