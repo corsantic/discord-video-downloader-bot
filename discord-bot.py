@@ -70,35 +70,4 @@ async def on_message(ctx):
     return
 
 
-async def attachment_download(attachments, channel_folder):
-    for attachment in attachments:
-        print(f"Found attachment: {attachment.filename}")
-        if attachment.filename.lower().endswith((".mp4", ".mov", ".webm", ".mkv")):
-            filepath = os.path.join(channel_folder, attachment.filename)
-            async with aiohttp.ClientSession() as session:
-                async with session.get(attachment.url) as resp:
-                    if resp.status == 200:
-                        with open(filepath, "wb") as f:
-                            f.write(await resp.read())
-                        print(f"Downloaded: {attachment.filename}")
-
-async def download_from_cdn(url, channel_folder, message):
-    for match in re.finditer(DISCORD_CDN_REGEX, message.content):
-        url = match.group(0)
-        filename = urlparse(url).path.split("/")[-1]
-        filepath = os.path.join(channel_folder, filename)
-        print(f"Attempting to download: {url}")
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url) as resp:
-                    print(f"HTTP status: {resp.status}")
-                    if resp.status == 200:
-                        with open(filepath, "wb") as f:
-                            f.write(await resp.read())
-                        print(f"Downloaded from link: {filename}")
-                    else:
-                        print(f"Failed to download {filename}: HTTP {resp.status}")
-        except Exception as e:
-            print(f"Exception while downloading {url}: {e}")
-     
 bot.run(TOKEN)
