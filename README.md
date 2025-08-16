@@ -10,3 +10,9 @@ Add bot to channel give permissions these permissions:
 
 This version will send videos with bot command to users
 If you want to download use `download-to-local` branch
+
+
+run docker
+```sh
+docker run -d -p 5000:5000 --restart unless-stopped discord-bot
+```
