@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: discord-bot
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - discord_bot_token=${discord_bot_token}
+    env_file:
+      - .env
